@@ -8,10 +8,8 @@ class Solution {
     Arrays.fill(dp, amount + 1);
     dp[0] = 0;
     for (int coin : coins) {
-      for (int i = 0; i <= amount; i++) {
-        if (coin <= i) {
-          dp[i] = Math.min(dp[i], dp[i - coin] + 1);
-        }
+      for (int j = coin; j <= amount; j++) {
+        dp[j] = Math.min(dp[j], dp[j - coin] + 1);
       }
     }
     return dp[amount] > amount ? -1 : dp[amount];
